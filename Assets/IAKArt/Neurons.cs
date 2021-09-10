@@ -18,11 +18,21 @@ public class Neurons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i=0;i<outputNeurons.Length;i++)
+        for (int i = 0; i < outputNeurons.Length; i++)
+        {
+
+                outputNeurons[i].state = 0;
+
+        }
+        for (int i=0;i<outputNeurons.Length;i++)
         {
             if(weight[i]> threshold)
             {
-                outputNeurons[i].state += state;
+                if (outputNeurons[i].state > 0)
+                {
+                    outputNeurons[i].state += state;
+                }
+                outputNeurons[i].state = state;
             }
             else
             {
